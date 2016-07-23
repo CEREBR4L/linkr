@@ -28,7 +28,7 @@ exports.newURL = function(req, res){
 	var url = validateURL(url);
 
 	if(url == "Failed"){
-		res.send("Please provide a valide URL");
+		res.send({error: "Please provide a valid URL"});
 	}
 	else{
 		links = new redirects({link: url});
