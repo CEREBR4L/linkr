@@ -18,7 +18,7 @@ var siteURL = "localhost:3000/";
 
 exports.findAll = function(req, res){
 	redirects.find({}, function(err, items){
-		res.send(items);
+		res.json(items);
 	});
 };
 

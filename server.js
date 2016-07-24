@@ -5,12 +5,25 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-app.use('/', express.static(__dirname + '/public/'));
-app.get('/api', redirects.home);
+/*
+ API ROUTES
+ */
 app.get('/api/links', redirects.findAll);
 app.get('/api/new/:url*', redirects.newURL);
 app.get('/api/new', redirects.new);
 app.get('/api/:URLid', redirects.URLRedirect);
+
+/*
+ ANGULAR FRONT END
+ */
+
+app.use('/css/', express.static(__dirname + '/public/css/'));
+app.use('/js/', express.static(__dirname + '/public/js/'));
+app.use('/views/', express.static(__dirname + '/public/views/'));
+
+app.use('*', function(req, res){
+	res.sendFile(__dirname + '/public/');
+});
 
 app.listen(port, function(){
 	console.log("App active and running on: " + port);
