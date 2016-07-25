@@ -3,3 +3,68 @@ body{
 	margin: 0;
 }
 
+.cont{
+	width: 70%;
+	margin: 0 auto;
+}
+
+.nav{
+	background-color: #435872; /*BLUE*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 10vh;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-list{
+	list-style: none;
+	padding: 0;
+	margin: 0 0 0 65%;
+}
+
+.nav-list-item{
+	display: inline-block;
+	margin: 0 20px;
+}
+
+.main-text{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 0;
+	margin: 0 65% 0 0;
+	color: #EAE85D; /*YELLOWish*/
+	display: inline-block;
+}
+
+.link{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	text-decoration: none;
+	color: #fff;
+}
+
+.landing{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #435872;
+	min-height: 90vh;
+}
+
+.landing-text{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 0;
+	margin: 0;
+	color: #EAE85D; /*YELLOWish*/
+}
+
+.heading{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 20px 0px;
+	margin: 0;
+	font-size: 1.25em;
+	color: #435872;
+}

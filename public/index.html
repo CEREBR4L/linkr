@@ -2,13 +2,24 @@
 <html ng-app="linkr">
 <head>
 	<title>Linkr</title>
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<base href="/">
 </head>
 <body ng-controller="homeCont" class="controller">
-
-	<a href="#">Home</a>
-	<a href="#useapi">useapi</a>
+	<nav class="nav">
+		<div>
+			<h2 class="main-text">Linkr</h2>
+		</div>
+		
+		<div>
+			<ul class="nav-list">
+				<li class="nav-list-item"><a href="#" class="link">Home</a></li>
+				<li class="nav-list-item"><a href="#useapi" class="link">API</a></li>
+			</ul>	
+		</div>
+	
+	</nav>
 
 	<div ng-view class="view"></div>
 
