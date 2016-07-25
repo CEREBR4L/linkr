@@ -13,7 +13,8 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 10vh;
+	min-height: 50px;
+	height: 10vh;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -55,9 +56,10 @@ body{
 .landing-text{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
-	padding: 0;
+	padding: 10px 0;
 	margin: 0;
 	color: #EAE85D; /*YELLOWish*/
+	text-align: center;
 }
 
 .heading{
@@ -67,4 +69,51 @@ body{
 	margin: 0;
 	font-size: 1.25em;
 	color: #435872;
+}
+
+.form{
+	border-radius: 12px;
+}
+
+.text-box{
+	border: none;
+	background-color: rgba(0, 0, 0, .2);
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 6px 10px;
+	border-radius: 10px 0 0 10px; 
+	color: #fff;
+	margin: 0;
+	font-size: 1em;
+	border-bottom: 1px solid rgba(0, 0, 0, .4);
+	border-left: 1px solid rgba(0, 0, 0, .4);
+	border-top: 1px solid rgba(0, 0, 0, .4);
+}
+
+.text-box:focus, .submit:focus{
+	text-decoration: none;
+	outline: none;
+}
+
+.submit::-moz-focus-inner{
+	border: 0px solid transparent;
+}
+
+.submit{
+	border: none;
+	background-color: #EAE85D;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 6px 10px;
+	margin: 0 0 0 -5px;
+	border-radius: 0 10px 10px 0; 
+	color: #435872;
+	font-size: 1em;
+	border-bottom: 1px solid rgba(0, 0, 0, .4);
+	border-right: 1px solid rgba(0, 0, 0, .4);
+	border-top: 1px solid rgba(0, 0, 0, .4);
+}
+
+.submit:hover{
+	cursor: pointer;
 }
