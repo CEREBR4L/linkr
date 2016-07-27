@@ -13,6 +13,11 @@ app.config(function($routeProvider, $locationProvider){
 			controller: 'apiCont',
 			controllerAs: 'api'
 		})
+		.when('/oops', {
+			templateUrl: 'views/error.html',
+			controller: 'errorCont',
+			controllerAs: 'error'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});

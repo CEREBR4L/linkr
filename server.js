@@ -11,7 +11,7 @@ var port = process.env.PORT || 3000;
 app.get('/api/links', redirects.findAll);
 app.get('/api/new/:url*', redirects.newURL);
 app.get('/api/new', redirects.new);
-app.get('/api/:URLid', redirects.URLRedirect);
+app.get('/:URLid', redirects.URLRedirect);
 
 /*
  ANGULAR FRONT END

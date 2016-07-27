@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var autoInc = require('mongoose-auto-increment');
+var http = require('http');
+var url = require('url');
 
 var connect = mongoose.connect('mongodb://localhost:27018/linkr');
 
@@ -14,7 +16,7 @@ var dbSchema = new Schema({
 dbSchema.plugin(autoInc.plugin, {model: 'redirects', field: 'code'});
 var redirects = connect.model('redirects', dbSchema);
 
-var siteURL = "http://192.168.0.34:3000/";
+var siteURL = "http://localhost:3000/";
 
 exports.findAll = function(req, res){
 	redirects.find({}, function(err, items){
@@ -40,7 +42,11 @@ exports.newURL = function(req, res){
 			}
 			else{
 				console.log("Links saved! - " + linkObj);
-				res.send({link: linkObj.link, code: linkObj.code, redirectLink: siteURL + 'api/' + linkObj.code});
+				res.send({
+					link: linkObj.link, 
+					code: linkObj.code, 
+					redirectLink: siteURL + 'api/' + linkObj.code
+				});
 			}
 
 		})
@@ -67,10 +73,19 @@ exports.URLRedirect = function(req, res){
 			console.log("There was an error: " + err );
 		}
 
-		console.log("Got URL for: " + redirectCode + ' / ' + item.link);
+		activeUrl(item.link, function(resp){
+			console.log('STATUS: ' + resp);
 
-		res.redirect(item.link);
-		
+			if(resp == 301){
+				res.redirect(item.link);
+			}
+			
+			if(resp == "ENOTFOUND"){
+				res.redirect(siteURL + '#oops');
+			}
+
+		});
+
 	});
 };
 
@@ -83,5 +98,36 @@ function validateURL(url){
 	else{
 		return "Failed";
 	}
+}
+
+
+function activeUrl(Url, callback){
+
+	console.log("REQUESTED URL: " + url.parse(Url).host);
+	var thing;
+	var options = {
+		method: 'HEAD',
+		host: url.parse(Url).host,
+		port: 80,
+		path: url.parse(Url).pathname
+	};
+
+	var req = http.request(options, function(r){
+
+		console.log("Log r: " + r.statusCode);
+
+		if (r.statusCode == 301) {
+			callback(r.statusCode);
+		}
+
+	});
+
+	req.on('error', function(err){
+		console.log(err);
+		callback(err.code);
+	});
+
+	req.end();
+
 }
 
