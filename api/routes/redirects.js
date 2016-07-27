@@ -14,7 +14,7 @@ var dbSchema = new Schema({
 dbSchema.plugin(autoInc.plugin, {model: 'redirects', field: 'code'});
 var redirects = connect.model('redirects', dbSchema);
 
-var siteURL = "localhost:3000/";
+var siteURL = "http://192.168.0.34:3000/";
 
 exports.findAll = function(req, res){
 	redirects.find({}, function(err, items){
@@ -24,7 +24,7 @@ exports.findAll = function(req, res){
 
 exports.newURL = function(req, res){
 
-	var url = req.url.slice(5); 
+	var url = req.url.slice(9); 
 	var url = validateURL(url);
 
 	if(url == "Failed"){
@@ -40,7 +40,7 @@ exports.newURL = function(req, res){
 			}
 			else{
 				console.log("Links saved! - " + linkObj);
-				res.send({link: linkObj.link, code: linkObj.code, redirectLink: siteURL + linkObj.code});
+				res.send({link: linkObj.link, code: linkObj.code, redirectLink: siteURL + 'api/' + linkObj.code});
 			}
 
 		})
@@ -63,7 +63,7 @@ exports.URLRedirect = function(req, res){
 	console.log("Getting URL for: " + redirectCode);
 
 	redirects.findOne({'code': redirectCode}, function(err, item){
-		if(err){
+		if(err){	
 			console.log("There was an error: " + err );
 		}
 
