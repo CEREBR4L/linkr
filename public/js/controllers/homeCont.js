@@ -4,6 +4,7 @@ angular.module('linkr')
 		$scope.title = "Your Link Will Appear Here";
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
+		$scope.links;
 
 		$scope.getNewURL = function(url){
 
@@ -31,8 +32,25 @@ angular.module('linkr')
 
 		}
 
+		$scope.getLinks = function(){
+
+			$http({
+				method: 'GET',
+				url: '/api/links'
+			}).then(function successCallback(res){
+	
+				$scope.links = res.data;
+
+			}, function errorCallback(res){
+				$scope.links = res.status;
+			});
+
+		}
+
 		$scope.log = function(){
 			console.log("logging");
 		}
+
+		$scope.getLinks();
 
 	});

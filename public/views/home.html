@@ -3,10 +3,41 @@
 		<h3 class="landing-text">Get Your Short Link</h3>
 		<div class="form">
 			<input type="text" ng-model="text" name="text" class="text-box" placeholder="https://www.yoururl.com/" id="url">
-			<button  ng-click="getNewURL(text)" class="submit">Get Link</button>
+			<button  ng-click="getNewURL(text); getLinks()" class="submit">Get Link</button>
 		</div>
 		<p class="t-center">
 			<a class="link" ng-href="{{ urlPath }}" target="_blank">{{ title }}</a>
 		</p>
 	</div>
 </div>
+
+<div class="cont">
+		
+	<h1 class="heading t-center">Our Redirects</h1>
+
+	<table class="table">
+		<tr class="table-row">
+			<th class="table-header">URL</th>
+			<th class="table-header">Short Code</th>
+			<th class="table-header">Link</th>
+		</tr>
+		<tr ng-repeat="link in links" class="table-row">
+			<td class="table-item">
+				<div class="table-item-cont">
+					{{ link.link }}
+				</div>
+			</td>
+			<td class="table-item">{{ link.code }}</td>
+			<td class="table-item">
+				<a ng-href='{{ "http://localhost:3000/" + link.code }}' target="_blank" class="orangeish link">
+					{{ "localhost:3000/" + link.code }}
+				</a>
+			</td>
+		</tr>
+	</table>
+
+</div>
+
+<footer class="footer">
+	
+</footer>

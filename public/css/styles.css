@@ -5,7 +5,7 @@ body{
 
 .cont{
 	width: 70%;
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 .nav{
@@ -130,4 +130,65 @@ body{
 
 .t-center{
 	text-align: center;
+}
+
+
+.table{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	border: 1px solid #29333E;
+	border-collapse: collapse;
+	table-layout:fixed; 
+	width: 100%;
+}
+
+.table-row:hover .table-item{
+    background-color: #29333E;
+    color: #FFD15A;
+}
+
+.table-row:hover .table-item-cont{
+	white-space: normal;
+    overflow: visible;
+}
+
+.table-header:nth-child(1){
+	width: 50%;
+}
+
+.table-header{
+	border: 1px solid #29333E;
+	width: 25%;
+	padding: 10px 10px;
+	background-color: #29333E;
+	color: #FFD15A;
+}
+
+.table-item:nth-child(1){
+	text-align: left;
+}
+
+.table-item{
+	border: 1px solid #29333E;
+	margin: 0px;
+	text-align: center;
+	table-layout: fixed; 
+    color: #29333E;
+}
+
+.table-item-cont{
+	white-space: nowrap;
+    overflow: hidden;
+	margin: 3px 10px;
+}
+
+.orangeish{
+	color: #F9A624;
+}
+
+.footer{
+	min-height: 10vh;
+	height: 50px;
+	background-color: #29333E;
+	margin-top: 30px;
 }
