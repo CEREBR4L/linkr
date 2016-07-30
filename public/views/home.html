@@ -6,14 +6,14 @@
 			<button  ng-click="getNewURL(text); getLinks()" class="submit">Get Link</button>
 		</div>
 		<p class="t-center">
-			<a class="link" ng-href="{{ urlPath }}" target="_blank">{{ title }}</a>
+			<a class="link" ng-href="{{ urlPath }}" target="_blank" ng-style="titleColour">{{ title }}</a>
 		</p>
 	</div>
 </div>
 
 <div class="cont">
 		
-	<h1 class="heading t-center">Our Redirects</h1>
+	<h1 class="heading t-center">Our Links</h1>
 
 	<table class="table">
 		<tr class="table-row">
@@ -29,15 +29,11 @@
 			</td>
 			<td class="table-item">{{ link.code }}</td>
 			<td class="table-item">
-				<a ng-href='{{ "http://localhost:3000/" + link.code }}' target="_blank" class="orangeish link">
-					{{ "localhost:3000/" + link.code }}
+				<a ng-href='{{ siteURL + "r/" + link.code }}' target="_blank" class="orangeish link">
+					{{ siteURL + 'r/' + link.code }}
 				</a>
 			</td>
 		</tr>
 	</table>
 
 </div>
-
-<footer class="footer">
-	
-</footer>

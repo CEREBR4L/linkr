@@ -45,7 +45,7 @@ exports.newURL = function(req, res){
 				res.send({
 					link: linkObj.link, 
 					code: linkObj.code, 
-					redirectLink: siteURL + '' + linkObj.code
+					redirectLink: siteURL + 'r/' + linkObj.code
 				});
 			}
 
@@ -75,13 +75,12 @@ exports.URLRedirect = function(req, res){
 
 		activeUrl(item.link, function(resp){
 			console.log('STATUS: ' + resp);
-
-			if(resp == 200 || resp == 304){
-				res.redirect(item.link);
-			}
 			
-			if(resp == "ENOTFOUND"){
+			if(resp == "ENOTFOUND" || resp == "ECONNREFUSED"){
 				res.redirect(siteURL + '#oops');
+			}
+			else{
+				res.redirect(item.link);
 			}
 
 		});
@@ -116,9 +115,7 @@ function activeUrl(Url, callback){
 
 		console.log("Log r: " + r.statusCode);
 
-		if (r.statusCode == 200 || r.statusCode == 304) {
-			callback(r.statusCode);
-		}
+		callback(r.statusCode);
 
 	});
 

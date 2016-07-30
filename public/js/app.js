@@ -19,7 +19,7 @@ app.config(function($routeProvider, $locationProvider){
 			controllerAs: 'error'
 		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/oops'
 		});
 
 	 $locationProvider.html5Mode(true);

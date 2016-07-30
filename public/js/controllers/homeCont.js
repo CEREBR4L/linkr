@@ -1,10 +1,12 @@
 angular.module('linkr')
 	.controller('homeCont', function homeController($scope, $http){
 		
-		$scope.title = "Your Link Will Appear Here";
+		$scope.title = "Your link will appear here";
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
 		$scope.links;
+		$scope.siteURL = "http://localhost:3000/"
+		$scope.titleColour = { "color": '#F5DEB3' };
 
 		$scope.getNewURL = function(url){
 
@@ -17,18 +19,31 @@ angular.module('linkr')
 			}).then(function successCallback(res){
 		
 				if(res.data.error){
-					$scope.title = "Please provide a valid URL"
+					$scope.errorStyle();
+					$scope.title = res.data.error;
+
+					$scope.text = "";
+
 				} 
+				else if($scope.text == "" || $scope.text == null || $scope.text == undefined){
+					$scope.errorStyle();
+					$scope.title = "Please enter a link";
+				}
 				else{
+					$scope.titleColour = { 
+						"color": '#F5DEB3',
+						"font-weight": "300" 
+					};
 					$scope.title = res.data.redirectLink;
 					$scope.urlPath = $scope.title;
+
+					$scope.text = "";
+
 				}
 
 			}, function errorCallback(res){
 				$scope.title = res.status;
 			});
-
-			$scope.text = "";
 
 		}
 
@@ -52,5 +67,12 @@ angular.module('linkr')
 		}
 
 		$scope.getLinks();
+
+		$scope.errorStyle = function(){
+			return $scope.titleColour = { 
+						"color": '#FF6F68',
+						"font-weight": "400"
+					};
+		}
 
 	});

@@ -4,8 +4,9 @@ body{
 }
 
 .cont{
-	width: 70%;
+	width: 80%;
 	margin: 20px auto;
+	margin-bottom: 50px;
 }
 
 .nav{
@@ -49,6 +50,8 @@ body{
 	font-weight: 300;
 	text-decoration: none;
 	color: #F5DEB3;
+	padding: 0;
+	margin: 0;
 }
 
 .link:hover{
@@ -65,9 +68,9 @@ body{
 
 .landing-text{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 	padding: 10px 0;
-	margin: 0;
+	margin: 5px 0px;
 	color: #FFD15A; /*YELLOWish*/
 	text-align: center;
 }
@@ -79,6 +82,32 @@ body{
 	margin: 0;
 	font-size: 1.25em;
 	color: #29333E;
+}
+
+.sub-heading{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	padding: 20px 10px;
+	margin: 0;
+	font-size: 1em;
+	color: #29333E;
+}
+
+.p{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	padding: 0px 0px 15px 10px;
+	margin: 0;
+	font-size: 1em;
+	color: #29333E;	
+}
+
+.code{
+	display: block;
+	padding: 15px;
+	margin: 0px 0px 15px 10px;
+	background-color: #29333E;
+	color: #F5DEB3;
 }
 
 .form{
@@ -189,6 +218,5 @@ body{
 .footer{
 	min-height: 10vh;
 	height: 50px;
-	background-color: #29333E;
-	margin-top: 30px;
+	background-color: #19232E;
 }
