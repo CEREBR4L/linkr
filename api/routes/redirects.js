@@ -71,6 +71,10 @@ exports.URLRedirect = function(req, res){
 			console.log("There was an error: " + err );
 		}
 
+		if(!item){
+			res.send('Not Found');
+		}
+
 		activeUrl(item.link, function(resp){
 			console.log('STATUS: ' + resp);
 			
