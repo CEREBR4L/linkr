@@ -90,7 +90,7 @@ exports.URLRedirect = function(req, res){
 
 
 function validateURL(url){
-	var regex = new RegExp(/[https|http]?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
+	var regex = new RegExp(/^[https|http]?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
 	if(url.match(regex)){
 		return url
 	}
