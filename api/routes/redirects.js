@@ -66,8 +66,6 @@ exports.URLRedirect = function(req, res){
 
 	var redirectCode = parseInt(req.params.URLid);
 
-	console.log("Getting URL for: " + redirectCode);
-
 	redirects.findOne({'code': redirectCode}, function(err, item){
 		if(err){	
 			console.log("There was an error: " + err );
