@@ -181,11 +181,6 @@ body{
     color: #FFD15A;
 }
 
-.table-row:hover .table-item-cont{
-	white-space: normal;
-    overflow: visible;
-}
-
 .table-header:nth-child(1){
 	width: 50%;
 }
