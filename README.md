@@ -1,5 +1,5 @@
-# LINKR MINIFIY URLS
+# LINKR - MINIFY URLS
 
-A small app to handle minifiying of URLs :)
+A small app to handle minifying of URLs :)
 
 (work in progress)
