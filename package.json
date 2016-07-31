@@ -1,0 +1,27 @@
+{
+  "name": "linkr",
+  "version": "0.0.1",
+  "description": "A URL minifying app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CEREBR4L/linkr.git"
+  },
+  "author": "CEREBR4L",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CEREBR4L/linkr/issues"
+  },
+  "homepage": "https://github.com/CEREBR4L/linkr#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "http": "0.0.0",
+    "mongoose": "^4.5.7",
+    "mongoose-auto-increment": "^5.0.1",
+    "url": "^0.11.0"
+  }
+}

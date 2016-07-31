@@ -3,7 +3,7 @@ var redirects = require('./api/routes/redirects.js');
 
 var app = express();
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 
 /*
  API ROUTES

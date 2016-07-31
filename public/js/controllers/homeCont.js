@@ -5,7 +5,7 @@ angular.module('linkr')
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
 		$scope.links;
-		$scope.siteURL = "http://localhost:3000/"
+		$scope.siteURL = "http://linkr.xyz/"
 		$scope.titleColour = { "color": '#F5DEB3' };
 
 		$scope.getNewURL = function(url){
