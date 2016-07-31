@@ -72,7 +72,7 @@ exports.URLRedirect = function(req, res){
 		}
 
 		if(!item){
-			res.redirect(siteURL + '#oops');
+			res.send('Not Found');
 		}
 
 		activeUrl(item.link, function(resp){
