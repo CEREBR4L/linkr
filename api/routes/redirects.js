@@ -74,18 +74,20 @@ exports.URLRedirect = function(req, res){
 		if(!item){
 			res.send('Not Found');
 		}
+		else{
+			activeUrl(item.link, function(resp){
+				
+				console.log('STATUS: ' + resp);
+				
+				if(resp == "ENOTFOUND" || resp == "ECONNREFUSED"){
+					res.redirect(siteURL + '#oops');
+				}
+				else{
+					res.redirect(item.link);
+				}
 
-		activeUrl(item.link, function(resp){
-			console.log('STATUS: ' + resp);
-			
-			if(resp == "ENOTFOUND" || resp == "ECONNREFUSED"){
-				res.redirect(siteURL + '#oops');
-			}
-			else{
-				res.redirect(item.link);
-			}
-
-		});
+			});
+		}
 
 	});
 };
