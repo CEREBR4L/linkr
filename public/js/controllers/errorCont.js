@@ -1,6 +1,6 @@
 angular.module('linkr')
 	.controller('errorCont', function errorController(){
 		
-		this.mainText = "Error getting that URL";
+		this.mainText = "Woops, looks like there was a problem getting that.";
 
 	});
