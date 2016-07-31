@@ -1,9 +1,8 @@
 # LINKR 
-## MINIFY URLS
 
-A small app to handle minifying of URLs :)
+A small app to handle minifying of URLs
 
-Link: [linkr](http://linkr.xyz/)
+### Live Link: [linkr](http://linkr.xyz/)
 
 ![screenshot of app](http://image.prntscr.com/image/0374a731d02a4b42a5b7cbb60b37dd65.png)
 
