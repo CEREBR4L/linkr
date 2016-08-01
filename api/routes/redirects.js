@@ -110,20 +110,6 @@ exports.URLRedirect = function(req, res){
 	});
 };
 
-exports.clear = function(req, res){
-
-	var number = parseInt(req.params.no);
-
-	redirects
-		.find({})
-		.sort({'code': -1})
-		.limit(8781)
-		.remove()
-		.exec();
-
-};
-
-
 function validateURL(url){
 	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
 	if(url.match(regex)){
