@@ -39,17 +39,28 @@ exports.findAmount = function(req, res){
 };
 
 exports.newURL = function(req, res){
+	
+	/*regexs we will need*/
+
+	var regex = new RegExp(/^https?/);
+	var linkr = new RegExp(/linkr.xyz\/r\/*/)
+
+	/*manipulate url if needed*/
 
 	var url = req.url.slice(9); 
-	var url = validateURL(url);
-	
-	var regex = new RegExp(/^https?/);
 
 	if(!regex.test(url)){
 		url = "http://" + url;
 	}
 
-	if(url == "Failed"){
+	var url = validateURL(url);
+
+	/*valid url?
+	no: send error
+	yes: log to db and return new data!
+	*/
+
+	if(url == "Failed" || linkr.test(url)){
 		res.send({error: "Please provide a valid URL"});
 	}
 	else{
