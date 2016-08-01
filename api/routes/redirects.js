@@ -127,7 +127,7 @@ exports.removeLink = function(req, res){
 	redirects
 		.findOne({'code': 8787})
 		.remove()
-		.exec(res.send("removed that dumb link"););
+		.exec();
 }
 
 function validateURL(url){
