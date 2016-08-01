@@ -123,12 +123,16 @@ exports.URLRedirect = function(req, res){
 	});
 };
 
-exports.removeLink = function(req, res){
+/*
+
+	GENERAL REMOVE FUNCTION - NO USE IT ALWAYS BEING ACTIVE NO NEED FOR IT.
+
+exports.remove = function(req, res){
 	redirects
-		.findOne({'code': 8787})
+		.findOne({})
 		.remove()
 		.exec();
-}
+}*/
 
 function validateURL(url){
 	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);

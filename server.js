@@ -12,7 +12,6 @@ app.get('/api/links', redirects.findAll);
 app.get('/api/links/:no', redirects.findAmount);
 app.get('/api/new/:url*', redirects.newURL);
 app.get('/api/new', redirects.new);
-app.get('/api/removedumblink', redirects.removeLink);
 app.get('/r/:URLid', redirects.URLRedirect);
 
 /*
