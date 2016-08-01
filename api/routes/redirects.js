@@ -35,13 +35,17 @@ exports.findAmount = function(req, res){
 		.exec(function(err, items){
 			res.json(items);
 		});
-		
+
 };
 
 exports.newURL = function(req, res){
 
 	var url = req.url.slice(9); 
 	var url = validateURL(url);
+	
+	if(!url.test(/^https?/)){
+		url = "http://" + url;
+	}
 
 	if(url == "Failed"){
 		res.send({error: "Please provide a valid URL"});
@@ -104,6 +108,19 @@ exports.URLRedirect = function(req, res){
 		}
 
 	});
+};
+
+exports.clear = function(req, res){
+
+	var number = parseInt(req.params.no);
+
+	redirects
+		.find({})
+		.sort({'code': -1})
+		.limit(8781)
+		.remove()
+		.exec();
+
 };
 
 
