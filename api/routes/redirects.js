@@ -110,7 +110,7 @@ exports.URLRedirect = function(req, res){
 				
 				console.log('STATUS: ' + resp);
 				
-				if(resp == "ENOTFOUND" || resp == "ECONNREFUSED"){
+				if(resp == "ENOTFOUND" || resp == "ECONNREFUSED" || resp == "ECONNRESET"){
 					res.redirect(siteURL + '#oops');
 				}
 				else{
@@ -122,6 +122,13 @@ exports.URLRedirect = function(req, res){
 
 	});
 };
+
+exports.removeLink = function(req, res){
+	redirects
+		.findOne({'code': 8787})
+		.remove()
+		.exec(res.send("removed that dumb link"););
+}
 
 function validateURL(url){
 	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
