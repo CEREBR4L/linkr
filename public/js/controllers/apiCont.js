@@ -14,7 +14,7 @@ angular.module('linkr')
 			{
 				"routeTitle": "Get new link",
 				"routeDesc": "This will allow you to create one new link in our database using a url and it will return the url and short code as well as the new linkr short link.",
-				"exampleCall": "http://link.xyz/api/new/https://github.com/CEREBR4L",
+				"exampleCall": "http://linkr.xyz/api/new/https://github.com/CEREBR4L",
 				"exampleResp": '{"link":"https://github.com/CEREBR4L","code":3,"redirectLink":"http://linkr.xyz/r/3"}'
 			}
 		];
