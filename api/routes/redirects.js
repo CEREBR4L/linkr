@@ -43,7 +43,9 @@ exports.newURL = function(req, res){
 	var url = req.url.slice(9); 
 	var url = validateURL(url);
 	
-	if(!url.test(/^https?/)){
+	var regex = new RegExp(/^https?/);
+
+	if(!regex.test(url)){
 		url = "http://" + url;
 	}
 
