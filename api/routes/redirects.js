@@ -24,6 +24,20 @@ exports.findAll = function(req, res){
 	});
 };
 
+exports.findAmount = function(req, res){
+
+	var number = parseInt(req.params.no);
+
+	redirects
+		.find({})
+		.sort({'code': -1})
+		.limit(number)
+		.exec(function(err, items){
+			res.json(items);
+		});
+		
+};
+
 exports.newURL = function(req, res){
 
 	var url = req.url.slice(9); 
@@ -55,7 +69,7 @@ exports.newURL = function(req, res){
 };
 
 exports.home = function(req, res){
-	res.send("linkr API");
+	res.redirect(siteURL + '#useapi');
 }
 
 exports.new = function(req, res){
@@ -94,7 +108,7 @@ exports.URLRedirect = function(req, res){
 
 
 function validateURL(url){
-	var regex = new RegExp(/[https|http]?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
+	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
 	if(url.match(regex)){
 		return url
 	}

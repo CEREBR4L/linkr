@@ -9,6 +9,7 @@ var port = process.env.PORT || 80;
  API ROUTES
  */
 app.get('/api/links', redirects.findAll);
+app.get('/api/links/:no', redirects.findAmount);
 app.get('/api/new/:url*', redirects.newURL);
 app.get('/api/new', redirects.new);
 app.get('/r/:URLid', redirects.URLRedirect);
