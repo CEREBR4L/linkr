@@ -64,23 +64,53 @@ exports.newURL = function(req, res){
 		res.send({error: "Please provide a valid URL"});
 	}
 	else{
-		links = new redirects({link: url});
-
-		links.save(function(err, linkObj){
+		redirects.findOne({'link': url}, function(err, items){
 
 			if(err){
-				console.log("Err saving links! - " + err);
+				console.log("Error : " + err);
 			}
 			else{
-				console.log("Links saved! - " + linkObj);
-				res.send({
-					link: linkObj.link, 
-					code: linkObj.code, 
-					redirectLink: siteURL + 'r/' + linkObj.code
-				});
+
+				if(!items){
+					
+					links = new redirects({link: url});
+
+					links.save(function(err, linkObj){
+
+						if(err){
+
+							console.log("Err saving links! - " + err);
+
+						}
+						else{
+
+							console.log("Links saved! - " + linkObj);
+
+							res.send({
+								link: linkObj.link, 
+								code: linkObj.code, 
+								redirectLink: siteURL + 'r/' + linkObj.code
+							});
+
+						}
+
+					})
+
+				}
+				else{
+
+					res.json({
+						link: items.link,
+						code: items.code,
+						redirectLink: siteURL + 'r/' + items.code
+					});
+
+				}
+
 			}
 
 		})
+
 	}
 
 };
