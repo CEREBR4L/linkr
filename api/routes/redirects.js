@@ -57,7 +57,9 @@ exports.newURL = function(req, res){
 
 	/*valid url?
 	no: send error
-	yes: log to db and return new data!
+	yes: well does it exist already? 
+	yes: return already exisitng data
+	no: log to db and return new data!
 	*/
 
 	if(url == "Failed" || linkr.test(url)){
@@ -72,7 +74,7 @@ exports.newURL = function(req, res){
 			else{
 
 				if(!items){
-					
+
 					links = new redirects({link: url});
 
 					links.save(function(err, linkObj){
@@ -165,7 +167,7 @@ exports.remove = function(req, res){
 }*/
 
 function validateURL(url){
-	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/);
+	var regex = new RegExp(/([https|http]:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]\/*)/);
 	if(url.match(regex)){
 		return url
 	}
