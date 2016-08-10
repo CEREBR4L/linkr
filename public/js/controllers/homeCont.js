@@ -44,14 +44,14 @@ angular.module('linkr')
 
 					$scope.text = "";
 
+					//refresh me grid pls
+					$scope.getLinks();
+
 				}
 
 			}, function errorCallback(res){
 				$scope.title = res.status;
 			});
-
-			//refresh me grid pls
-			$scope.getLinks();
 
 		}
 
