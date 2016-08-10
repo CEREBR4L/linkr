@@ -1,10 +1,10 @@
 <div class="landing">
 	<div>
 		<h3 class="landing-text">Get Your Short Link</h3>
-		<div class="form">
+		<form  ng-submit="getNewURL(text)" class="form">
 			<input type="text" ng-model="text" name="text" class="text-box" placeholder="https://www.yoururl.com/" id="url">
-			<button  ng-click="getNewURL(text); getLinks()" class="submit">Get Link</button>
-		</div>
+			<button type="submit" class="submit">Get Link</button>
+		</form>
 		<p class="t-center">
 			<a class="link" ng-href="{{ urlPath }}" target="_blank" ng-style="titleColour">{{ title }}</a>
 		</p>

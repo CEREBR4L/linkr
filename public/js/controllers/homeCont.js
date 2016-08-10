@@ -1,11 +1,16 @@
 angular.module('linkr')
 	.controller('homeCont', function homeController($scope, $http){
+
+		/*Live config*/
+		$scope.siteURL = "http://linkr.xyz/";
 		
+		/*Test config*/
+		//$scope.siteURL = "http://localhost:8080/";
+
 		$scope.title = "Your link will appear here";
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
 		$scope.links;
-		$scope.siteURL = "http://linkr.xyz/"
 		$scope.titleColour = { "color": '#F5DEB3' };
 
 		$scope.getNewURL = function(url){
@@ -44,6 +49,9 @@ angular.module('linkr')
 			}, function errorCallback(res){
 				$scope.title = res.status;
 			});
+
+			//refresh me grid pls
+			$scope.getLinks();
 
 		}
 

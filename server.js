@@ -3,7 +3,11 @@ var redirects = require('./api/routes/redirects.js');
 
 var app = express();
 
+/* Live config */
 var port = process.env.PORT || 80;
+
+/* Test Config */
+//var port = process.env.PORT || 8080;
 
 /*
  API ROUTES

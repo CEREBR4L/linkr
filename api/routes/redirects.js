@@ -4,7 +4,13 @@ var autoInc = require('mongoose-auto-increment');
 var http = require('http');
 var url = require('url');
 
+/* Live config */
+var siteURL = "http://linkr.xyz/";
 var connect = mongoose.connect('mongodb://127.0.0.1:27017/linkr');
+
+/* Test config */
+//var siteURL = "http://localhost:8080/";
+//var connect = mongoose.connect('mongodb://localhost:27018/linkr');
 
 autoInc.initialize(connect);
 
@@ -15,8 +21,6 @@ var dbSchema = new Schema({
 
 dbSchema.plugin(autoInc.plugin, {model: 'redirects', field: 'code'});
 var redirects = connect.model('redirects', dbSchema);
-
-var siteURL = "http://linkr.xyz/";
 
 exports.findAll = function(req, res){
 	redirects.find({}, function(err, items){
