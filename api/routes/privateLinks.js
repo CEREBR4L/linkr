@@ -21,13 +21,13 @@ var dbSchema = new Schema({
 var privateLinks = mongoose.model('privateLinks', dbSchema);
 
 /* FOR TEST PURPOSES ONLY! */
-
+/*
 exports.findAll = function(req, res){
 	privateLinks.find({}, function(err, items){
 		res.json(items);
 	});
 };
-
+*/
 
 exports.newURL = function(req, res){
 	
