@@ -1,6 +1,8 @@
 angular.module('linkr')
 	.controller('homeCont', function homeController($scope, $http){
 
+		$scope.displayURL = "linkr.xyz/";
+
 		/*Live config*/
 		$scope.siteURL = "http://linkr.xyz/";
 		
@@ -18,40 +20,81 @@ angular.module('linkr')
 			$scope.url = $scope.text;
 			console.log("Getting New Url: " + $scope.url);
 
-			$http({
-				method: 'GET',
-				url: '/api/new/' + $scope.url
-			}).then(function successCallback(res){
-		
-				if(res.data.error){
-					$scope.errorStyle();
-					$scope.title = res.data.error;
+			if($scope.private){
 
-					$scope.text = "";
+				$http({
+					method: 'GET',
+					url: '/api/p/new/' + $scope.url
+				}).then(function successCallback(res){
+			
+					if(res.data.error){
+						$scope.errorStyle();
+						$scope.title = res.data.error;
 
-				} 
-				else if($scope.text == "" || $scope.text == null || $scope.text == undefined){
-					$scope.errorStyle();
-					$scope.title = "Please enter a link";
-				}
-				else{
-					$scope.titleColour = { 
-						"color": '#F5DEB3',
-						"font-weight": "300" 
-					};
-					$scope.title = res.data.redirectLink;
-					$scope.urlPath = $scope.title;
+						$scope.text = "";
 
-					$scope.text = "";
+					} 
+					else if($scope.text == "" || $scope.text == null || $scope.text == undefined){
+						$scope.errorStyle();
+						$scope.title = "Please enter a link";
+					}
+					else{
 
-					//refresh me grid pls
-					$scope.getLinks();
+						$scope.titleColour = { 
+							"color": '#F5DEB3',
+							"font-weight": "300" 
+						};
 
-				}
+						$scope.title = res.data.redirectLink;
+						$scope.urlPath = $scope.title;
 
-			}, function errorCallback(res){
-				$scope.title = res.status;
-			});
+						$scope.text = "";
+
+					}
+
+				}, function errorCallback(res){
+					$scope.title = res.status;
+				});
+
+			}
+			else{
+				$http({
+					method: 'GET',
+					url: '/api/new/' + $scope.url
+				}).then(function successCallback(res){
+			
+					if(res.data.error){
+						$scope.errorStyle();
+						$scope.title = res.data.error;
+
+						$scope.text = "";
+
+					} 
+					else if($scope.text == "" || $scope.text == null || $scope.text == undefined){
+						$scope.errorStyle();
+						$scope.title = "Please enter a link";
+					}
+					else{
+
+						$scope.titleColour = { 
+							"color": '#F5DEB3',
+							"font-weight": "300" 
+						};
+
+						$scope.title = res.data.redirectLink;
+						$scope.urlPath = $scope.title;
+
+						$scope.text = "";
+
+						//refresh me grid pls
+						$scope.getLinks();
+
+					}
+
+				}, function errorCallback(res){
+					$scope.title = res.status;
+				});
+			}
 
 		}
 

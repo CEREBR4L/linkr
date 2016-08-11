@@ -4,6 +4,10 @@
 		<form  ng-submit="getNewURL(text)" class="form">
 			<input type="text" ng-model="text" name="text" class="text-box" placeholder="https://www.yoururl.com/" id="url">
 			<button type="submit" class="submit">Get Link</button>
+			<div class="checkbox">
+				<input type="checkbox" id="c1" name="cc" ng-model="private" />
+				<label for="c1"><span></span><p class="chk">Private Link</p></label>
+			</div>
 		</form>
 		<p class="t-center">
 			<a class="link" ng-href="{{ urlPath }}" target="_blank" ng-style="titleColour">{{ title }}</a>
@@ -31,7 +35,7 @@
 			<td class="table-item">
 				<div class="table-item-cont">
 					<a ng-href='{{ siteURL + "r/" + link.code }}' target="_blank" class="orangeish link">
-						{{ siteURL + 'r/' + link.code }}
+						{{ displayURL + 'r/' + link.code }}
 					</a>	
 				</div>
 			</td>

@@ -1,4 +1,4 @@
-body{
+body, p{
 	padding: 0;
 	margin: 0;
 }
@@ -169,7 +169,6 @@ body{
 	text-align: center;
 }
 
-
 .table{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
@@ -238,6 +237,42 @@ body{
 .source{
 	padding: 0;
 	font-size: .7em;
+}
+
+.checkbox{
+	font-family: 'Roboto', sans-serif;
+	color: #F5DEB3;
+	padding: 15px;
+	text-align: center;
+	font-size: .8em;
+	margin: 0;
+}
+
+.chk{
+	margin: 0px 5px;
+	display: inline-block;
+}
+
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:12px;
+    height:12px;
+    margin:-1px 4px 0 0;
+    border-radius: 50%;
+    vertical-align:middle;
+    background-color: rgba(0, 0, 0, .4);
+    border: 3px solid rgba(0, 0, 0, .2);
+    cursor:pointer;
+}
+
+input[type="checkbox"]:checked + label span {
+	width:12px;
+    height:12px;
+    border: 3px solid rgba(0, 0, 0, .4);
+    background-color: #FFD15A;
 }
 
 @media (max-width: 600px) {

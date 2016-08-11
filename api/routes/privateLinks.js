@@ -1,46 +1,33 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var autoInc = require('mongoose-auto-increment');
+var shortid = require('shortid');
 var http = require('http');
 var url = require('url');
 
 /* Live config */
 var siteURL = "http://linkr.xyz/";
-var connect = mongoose.connect('mongodb://127.0.0.1:27017/linkr');
 
 /* Test config */
 //var siteURL = "http://localhost:8080/";
-//var connect = mongoose.connect('mongodb://localhost:27018/linkr');
-
-autoInc.initialize(connect);
 
 var dbSchema = new Schema({
 	link: String, 
-	code: Number
+	_id: {
+		type: String,
+		'default': shortid.generate
+	}
 })
 
-dbSchema.plugin(autoInc.plugin, {model: 'redirects', field: 'code'});
-var redirects = connect.model('redirects', dbSchema);
+var privateLinks = mongoose.model('privateLinks', dbSchema);
+
+/* FOR TEST PURPOSES ONLY! */
 
 exports.findAll = function(req, res){
-	redirects.find({}, function(err, items){
+	privateLinks.find({}, function(err, items){
 		res.json(items);
 	});
 };
 
-exports.findAmount = function(req, res){
-
-	var number = parseInt(req.params.no);
-
-	redirects
-		.find({})
-		.sort({'code': -1})
-		.limit(number)
-		.exec(function(err, items){
-			res.json(items);
-		});
-
-};
 
 exports.newURL = function(req, res){
 	
@@ -51,7 +38,7 @@ exports.newURL = function(req, res){
 
 	/*manipulate url if needed*/
 
-	var url = req.url.slice(9); 
+	var url = req.url.slice(11); 
 
 	if(!regex.test(url)){
 		url = "http://" + url;
@@ -59,81 +46,41 @@ exports.newURL = function(req, res){
 
 	var url = validateURL(url);
 
-	/*valid url?
-	no: send error
-	yes: well does it exist already? 
-	yes: return already exisitng data
-	no: log to db and return new data!
-	*/
-
 	if(url == "Failed" || linkr.test(url)){
 		res.send({error: "Please provide a valid URL"});
 	}
 	else{
-		redirects.findOne({'link': url}, function(err, items){
+
+		links = new privateLinks({link: url});
+
+		links.save(function(err, linkObj){
 
 			if(err){
-				console.log("Error : " + err);
+
+				console.log("Err saving links! - " + err);
+
 			}
 			else{
 
-				if(!items){
+				console.log("Links saved! - " + linkObj);
 
-					links = new redirects({link: url});
-
-					links.save(function(err, linkObj){
-
-						if(err){
-
-							console.log("Err saving links! - " + err);
-
-						}
-						else{
-
-							console.log("Links saved! - " + linkObj);
-
-							res.send({
-								link: linkObj.link, 
-								code: linkObj.code, 
-								redirectLink: siteURL + 'r/' + linkObj.code
-							});
-
-						}
-
-					})
-
-				}
-				else{
-
-					res.json({
-						link: items.link,
-						code: items.code,
-						redirectLink: siteURL + 'r/' + items.code
-					});
-
-				}
+				res.send({
+					_id: linkObj._id, 
+					link: linkObj.link, 
+					redirectLink: siteURL + 'p/' + linkObj._id
+				});
 
 			}
-
 		})
-
 	}
-
 };
 
-exports.home = function(req, res){
-	res.redirect(siteURL + '#useapi');
-}
-
-exports.new = function(req, res){
-	res.send("Please enter a URL after 'new/' to create your short code");
-}
 
 exports.URLRedirect = function(req, res){
 
-	var redirectCode = parseInt(req.params.URLid);
+	var redirectCode = req.params.URLid;
 
-	redirects.findOne({'code': redirectCode}, function(err, item){
+	privateLinks.findOne({'_id': redirectCode}, function(err, item){
 		if(err){	
 			console.log("There was an error: " + err );
 		}
@@ -159,16 +106,6 @@ exports.URLRedirect = function(req, res){
 	});
 };
 
-/*
-
-	GENERAL REMOVE FUNCTION - NO USE IT ALWAYS BEING ACTIVE NO NEED FOR IT.
-
-exports.remove = function(req, res){
-	redirects
-		.findOne({})
-		.remove()
-		.exec();
-}*/
 
 function validateURL(url){
 	/*
