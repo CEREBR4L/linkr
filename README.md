@@ -18,7 +18,7 @@ Then once you have the files locally you will need to make sure mongodb and node
 
 Then you need to edit the config so it will work in a local environment.
 
-In server.js, privateLinks.js and redirects.js uncomment the Test config and commit out the live. 
+In `server.js`, `(root)/api/routes/privateLinks.js` and `(root)/api/routes/redirects.js` uncomment the Test config and commit out the live. 
 ```js
 /* Live config */
 //var port = process.env.PORT || 80;
