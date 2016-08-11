@@ -1,12 +1,10 @@
 # LINKR 
 
-Linkr is an app for minifying URLs, we allows users to submit links and have them minified into a linkr url that can be linked to redirect to the original url that was entered. Linkr allows for private and public links, public links have an API so that everyone is able to access them or use the data however they see fit. 
+Linkr is an app for minifying URLs, we allows users to submit links and have them minified into a linkr url that can be linked and will redirect to the original url that was entered. Linkr allows for private and public links, public links have an API so that everyone is able to access them or use the data however they see fit. 
 
-You can also create new links with api calls and request the top x most recent records. You can read about how [here](http://linkr.xyz/useapi).
+You can also create new links with api calls and request the top x most recent records. You can read more about our API [here](http://linkr.xyz/useapi).
 
 Application Link: [linkr](http://linkr.xyz/)
-
-Feel free to [log any issues](https://github.com/CEREBR4L/linkr/issues) or contribute.
 
 ## How to set up for local use
 
