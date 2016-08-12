@@ -14,4 +14,19 @@
 
 	</div>
 
+	<h1 class="heading t-center">
+		{{ privateTitle }}
+	</h1>
+
+	<div ng-repeat="route in privateApi">
+		
+		<h1 class="heading orangeish">{{ route.routeTitle }}</h1>
+		<p class="p">{{ route.routeDesc }}</p>
+		<h2 class="sub-heading">Example Call</h2>
+		<code class="code">{{ route.exampleCall }}</code>
+		<h2 class="sub-heading">Example Response</h2>
+		<code class="code">{{ route.exampleResp }}</code>
+
+	</div>
+
 </div>

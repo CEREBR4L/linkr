@@ -1,10 +1,16 @@
 angular.module('linkr')
 	.controller('apiCont', function useApiController($scope){
 		
-		$scope.title = "Linkr API";
+		$scope.title = "Public API Routes";
 		$scope.desc = "";
 
 		$scope.apiUse = [
+			{
+				"routeTitle": "Get new link",
+				"routeDesc": "This will allow you to create one new link in our database using a url and it will return the url and short code as well as the new linkr short link.",
+				"exampleCall": "http://linkr.xyz/api/new/https://github.com/CEREBR4L",
+				"exampleResp": '{"link":"https://github.com/CEREBR4L","code":3,"redirectLink":"http://linkr.xyz/r/3"}'
+			},
 			{
 				"routeTitle": "Find all links",
 				"routeDesc": "This allows you to get all the links that are in our database in one call to our api.",
@@ -16,12 +22,17 @@ angular.module('linkr')
 				"routeDesc": "This allows you to get the most recent links that are in our database limited to the number you set at the end of the call.",
 				"exampleCall": "http://linkr.xyz/api/links/1",
 				"exampleResp": '[{"_id":"579f8fd2b1f34f9321fc5987","code":8782,"link":"http://github.com/CEREBR4L/linkr","__v":0}]'
-			},
+			}
+		];
+
+		$scope.privateTitle = "Private API Routes";
+
+		$scope.privateApi = [
 			{
-				"routeTitle": "Get new link",
-				"routeDesc": "This will allow you to create one new link in our database using a url and it will return the url and short code as well as the new linkr short link.",
-				"exampleCall": "http://linkr.xyz/api/new/https://github.com/CEREBR4L",
-				"exampleResp": '{"link":"https://github.com/CEREBR4L","code":3,"redirectLink":"http://linkr.xyz/r/3"}'
+				"routeTitle": "Get new private link",
+				"routeDesc": "This will allow you to submit a new url to the database that is private and not avaliable to the public eye or any API calls. You will get back the id, the original link (link) and the short link (redirectLink) as a JSON response.",
+				"exampleCall": "http://linkr.xyz/api/p/new/https://github.com/CEREBR4L",
+				"exampleResp": '{"_id":"SJElZ2iK","link":"https://github.com/CEREBR4L","redirectLink":"http://linkr.xyz/p/SJElZ2iK"}'
 			}
 		];
 

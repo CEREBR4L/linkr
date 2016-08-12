@@ -102,7 +102,7 @@ angular.module('linkr')
 
 			$http({
 				method: 'GET',
-				url: '/api/links/100'
+				url: '/api/links/50'
 			}).then(function successCallback(res){
 	
 				$scope.links = res.data;
