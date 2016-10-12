@@ -7,7 +7,7 @@ angular.module('linkr')
 		$scope.siteURL = "http://linkr.xyz/";
 		
 		/*Test config*/
-		//$scope.siteURL = "http://localhost:8080/";
+		//$scope.siteURL = "http://192.168.0.34:8080/";
 
 		$scope.title = "Your link will appear here";
 		$scope.urlPath = "#";

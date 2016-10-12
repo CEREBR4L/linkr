@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var autoInc = require('mongoose-auto-increment');
+var autoInc = require('mongoose-auto-increment')
+var shortid = require('shortid');
 var http = require('http');
 var url = require('url');
 
@@ -16,7 +17,11 @@ autoInc.initialize(connect);
 
 var dbSchema = new Schema({
 	link: String, 
-	code: Number
+	code: Number,
+	_id: {
+		type: String,
+		'default': shortid.generate
+	}
 })
 
 dbSchema.plugin(autoInc.plugin, {model: 'redirects', field: 'code'});
@@ -95,7 +100,7 @@ exports.newURL = function(req, res){
 							res.send({
 								link: linkObj.link, 
 								code: linkObj.code, 
-								redirectLink: siteURL + 'r/' + linkObj.code
+								redirectLink: siteURL + 'r/' + linkObj._id
 							});
 
 						}
@@ -108,7 +113,7 @@ exports.newURL = function(req, res){
 					res.json({
 						link: items.link,
 						code: items.code,
-						redirectLink: siteURL + 'r/' + items.code
+						redirectLink: siteURL + 'r/' + items._id
 					});
 
 				}
@@ -131,14 +136,25 @@ exports.new = function(req, res){
 
 exports.URLRedirect = function(req, res){
 
-	var redirectCode = parseInt(req.params.URLid);
+	var redirectCode = req.params.URLid;
+	var search;
 
-	redirects.findOne({'code': redirectCode}, function(err, item){
+	console.log("THE REDIRECT CODE IS: " + redirectCode);
+
+	if(parseInt(redirectCode)){
+		search = {'code': redirectCode};
+	}
+	else{
+		search = {'_id': redirectCode};
+	} 
+
+	redirects.findOne(search, function(err, item){
 		if(err){	
 			console.log("There was an error: " + err );
 		}
 
 		if(!item){
+			console.log("THE REDIRECT CODE IS: " + redirectCode);
 			res.send('Not Found');
 		}
 		else{
