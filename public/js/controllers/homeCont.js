@@ -12,7 +12,7 @@ angular.module('linkr')
 		$scope.title = "Your link will appear here";
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
-		$scope.links;
+		$scope.links, $scope.uri;
 		$scope.titleColour = { "color": '#F5DEB3' };
 
 		$scope.getNewURL = function(url){
@@ -106,6 +106,13 @@ angular.module('linkr')
 			}).then(function successCallback(res){
 	
 				$scope.links = res.data;
+
+				if(res.data.code > 10558){
+					$scope.uri = siteURL + "r/" + link._id;
+				}
+				else{
+					$scope.uri = siteURL + "r/" + link.code;
+				}
 
 			}, function errorCallback(res){
 				$scope.links = res.status;
