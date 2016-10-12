@@ -108,10 +108,10 @@ angular.module('linkr')
 				$scope.links = res.data;
 
 				if(res.data.code > 10558){
-					$scope.uri = siteURL + "r/" + link._id;
+					$scope.uri = $scope.siteURL + "r/" + link._id;
 				}
 				else{
-					$scope.uri = siteURL + "r/" + link.code;
+					$scope.uri = $scope.siteURL + "r/" + link.code;
 				}
 
 			}, function errorCallback(res){
