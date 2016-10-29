@@ -35,6 +35,7 @@ app.get('/p/:URLid', privateLinks.URLRedirect);
 app.use('/css/', express.static(__dirname + '/public/css/'));
 app.use('/js/', express.static(__dirname + '/public/js/'));
 app.use('/views/', express.static(__dirname + '/public/views/'));
+app.use('/favicon/', express.static(__dirname + '/public/favicon/'));
 
 app.use('*', function(req, res){
 	res.sendFile(__dirname + '/public/');
