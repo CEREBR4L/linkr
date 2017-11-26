@@ -4,11 +4,9 @@ var shortid = require('shortid');
 var http = require('http');
 var url = require('url');
 
-/* Live config */
-var siteURL = "http://linkr.xyz/";
+/* config */
+var siteURL = "/";
 
-/* Test config */
-//var siteURL = "http://localhost:8080/";
 
 var dbSchema = new Schema({
 	link: String, 

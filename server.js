@@ -4,11 +4,8 @@ var privateLinks = require('./api/routes/privateLinks.js');
 
 var app = express();
 
-/* Live config */
-var port = process.env.PORT || 80;
-
-/* Test Config */
-//var port = process.env.PORT || 8080;
+/* config */
+var port = process.env.PORT || 8080;
 
 /*
  API ROUTES

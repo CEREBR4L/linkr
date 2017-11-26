@@ -6,12 +6,8 @@ var http = require('http');
 var url = require('url');
 
 /* Live config */
-var siteURL = "http://linkr.xyz/";
+var siteURL = "/";
 var connect = mongoose.connect('mongodb://127.0.0.1:27017/linkr');
-
-/* Test config */
-//var siteURL = "http://localhost:8080/";
-//var connect = mongoose.connect('mongodb://localhost:27018/linkr');
 
 autoInc.initialize(connect);
 

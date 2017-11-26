@@ -34,8 +34,8 @@
 			<td class="table-item">{{ link.code }}</td>
 			<td class="table-item">
 				<div class="table-item-cont">
-					<a ng-href='{{ siteURL + "r/" + (link.code > 10558 ? link._id : link.code)  }}' target="_blank" class="orangeish link">
-						{{ siteURL + "r/" + (link.code > 10558 ? link._id : link.code) }}
+					<a ng-href='{{ "/r/" + ( link._id )  }}' target="_blank" class="orangeish link">
+						{{ siteURL + "/r/" + (link._id) }}
 					</a>	
 				</div>
 			</td>

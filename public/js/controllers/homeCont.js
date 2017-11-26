@@ -3,12 +3,6 @@ angular.module('linkr')
 
 		$scope.displayURL = "linkr.xyz/";
 
-		/*Live config*/
-		$scope.siteURL = "http://linkr.xyz/";
-		
-		/*Test config*/
-		//$scope.siteURL = "http://192.168.0.34:8080/";
-
 		$scope.title = "Your link will appear here";
 		$scope.urlPath = "#";
 		$scope.url = $scope.text;
