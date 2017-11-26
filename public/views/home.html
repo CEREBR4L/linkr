@@ -22,7 +22,6 @@
 	<table class="table">
 		<tr class="table-row">
 			<th class="table-header">URL</th>
-			<th class="table-header">Short Code</th>
 			<th class="table-header">Link</th>
 		</tr>
 		<tr ng-repeat="link in links" class="table-row">
@@ -31,7 +30,6 @@
 					{{ link.link }}
 				</div>
 			</td>
-			<td class="table-item">{{ link.code }}</td>
 			<td class="table-item">
 				<div class="table-item-cont">
 					<a ng-href='{{ "/r/" + ( link._id )  }}' target="_blank" class="orangeish link">
